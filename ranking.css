@@ -28,3 +28,12 @@ nav{display:flex;align-items:center;gap:20px}nav a,.download{color:inherit;text-
 .about>div{padding:24px;border-top:1px solid var(--line)}.about p{line-height:1.6;color:var(--muted);margin:12px 0}
 .download{display:inline-block;background:var(--mint);color:#102820;border-radius:8px;padding:12px 18px;font-weight:700}.download:hover{background:#c8ffe7}.about small{display:block;color:var(--muted);margin-top:12px}
 @media(max-width:620px){nav{gap:9px;font-size:.74rem}.about{grid-template-columns:1fr;gap:5px}.about>div{padding:18px 8px}.brand{font-size:.8rem}}
+
+.public-profile{display:flex;align-items:center;gap:12px}.public-avatar{width:44px;height:44px;object-fit:cover;border-radius:50%;flex:none}
+.public-name{display:inline-block;animation:public-cycle var(--cycle,1.15s) infinite alternate}
+@keyframes public-cycle{to{background-position:100% 50%}}
+.public-badges{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin-top:6px}
+.public-badge{display:inline-block;width:27px;height:27px;background:currentColor;mask-image:var(--badge);mask-mode:luminance;mask-size:contain;mask-repeat:no-repeat}
+.public-badge[hidden]{display:none}.public-badges button{padding:3px 5px;font-size:11px}
+@media(max-width:620px){.public-profile{gap:6px}.public-avatar{width:28px;height:28px}}
+@media(prefers-reduced-motion:reduce){.public-name{animation:none}}
