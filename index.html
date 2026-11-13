@@ -1,3 +1,24 @@
-<!doctype html><html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Ranking de editores · Ranked Pro</title><style>
-:root{color-scheme:dark;font:16px system-ui;color:#eeeefa;background:#101116}main{max-width:780px;margin:8vh auto;padding:24px}h1{font-size:clamp(2rem,6vw,4rem);margin:.3em 0}small{color:#beaaff;letter-spacing:.14em}table{width:100%;border-collapse:collapse}th,td{text-align:left;border-bottom:1px solid #363845;padding:.85em .4em}th,p{color:#b4b7c7}td:last-child{text-align:right;font-variant-numeric:tabular-nums}button{background:#282635;color:white;border:1px solid #5d5672;padding:8px 14px;border-radius:8px}
-</style><main><small>RANKED PRO</small><h1>Ranking de editores</h1><p>Los primeros 100 editores por tiempo de edición desde su registro en Ranked Pro.</p><button id="refresh">Actualizar</button><p id="status" role="status"></p><table><thead><tr><th>Puesto</th><th>Editor</th><th>Tiempo</th></tr></thead><tbody></tbody></table></main><script src="ranking.js"></script></html>
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10151c">
+  <title>Clasificación de editores · Ranked Pro</title>
+  <link rel="stylesheet" href="ranking.css">
+  <script src="ranking.js" defer></script>
+</head>
+<body>
+<header><div class="wrap mast"><div class="brand"><i aria-hidden="true"></i>RANKED <b>PRO</b></div><span>Clasificación pública</span></div></header>
+<main class="wrap">
+  <section class="hero">
+    <div><h1>Ranking de<br><em>editores.</em></h1><p>Los 100 primeros por tiempo de edición en Premiere Pro.</p></div>
+    <div class="timeline" aria-hidden="true"><div class="ruler"></div><div class="track"><i></i><i></i><i></i></div><div class="track second"><i></i><i></i></div><div class="track audio"></div><div class="playhead"></div></div>
+  </section>
+  <section class="board" aria-labelledby="board-title">
+    <div class="tools"><div><h2 id="board-title">Clasificación general</h2><span id="updated"></span></div><button id="refresh" type="button"><span aria-hidden="true">↻</span> Actualizar</button></div>
+    <table><thead><tr><th scope="col">Puesto</th><th scope="col">Editor</th><th scope="col">Tiempo de edición</th></tr></thead><tbody></tbody></table>
+    <p id="status" role="status">Cargando clasificación…</p>
+  </section>
+</main>
+</body></html>
