@@ -1,0 +1,12 @@
+{
+  "name": "ranked-pro",
+  "productName": "Ranked Pro",
+  "version": "1.2.0",
+  "private": true,
+  "main": "main.js",
+  "description": "Seguimiento de sesiones de edición y clasificación de editores para Windows.",
+  "dependencies": {
+    "electron-updater": "^6.8.11"
+  },
+  "author": "Ranked Pro"
+}

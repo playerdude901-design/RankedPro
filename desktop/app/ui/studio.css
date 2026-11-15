@@ -1,0 +1,44 @@
+/* Studio presentation. Game rules, rank assets and rarity colors remain unchanged. */
+body{--bg:#0c0d14;--panel:#14151f;--panel2:#202131;--border:#2d2e42;--text:#f0eff9;--muted:#a7a6be;--purple:#ae85ff;--lime:#71dcb2}
+body.light{--bg:#f3f2f8;--panel:#fff;--panel2:#eae7f3;--border:#d6d1e5;--text:#252136;--muted:#686177;--purple:#7043bd;--lime:#237554}
+aside{background:linear-gradient(155deg,var(--panel),var(--bg) 65%);border-right-color:var(--border)}
+.brand{gap:14px;font-size:17px;letter-spacing:.05em;margin-bottom:32px}
+.brand-mark{width:32px;height:32px;background:var(--purple);transform:none;clip-path:polygon(16% 4%,84% 4%,100% 20%,88% 52%,62% 59%,83% 96%,54% 96%,30% 55%,18% 96%,0 96%,26% 22%,18% 43%,65% 43%,72% 24%,36% 24%)}
+nav{gap:4px}nav button{min-height:38px;border-radius:8px}nav button.active{background:color-mix(in srgb,var(--purple) 22%,var(--panel));color:var(--text)}nav button.active svg{color:var(--purple)}nav button.active:after{display:none}
+main{padding-top:30px}header{margin-bottom:26px}h1{font-weight:650;letter-spacing:-.035em}
+.card{border-radius:16px;background:var(--panel)}.card:hover{border-color:color-mix(in srgb,var(--purple) 35%,var(--border))}
+.timer-card{background:linear-gradient(100deg,var(--panel) 35%,transparent),url('studio-timeline.svg') right bottom/440px auto no-repeat,var(--panel)}
+.timer{font-weight:550;letter-spacing:-.045em}.timer-bottom{position:relative}.timer-sub{max-width:80%}
+.rank-card{background:linear-gradient(145deg,color-mix(in srgb,var(--purple) 8%,var(--panel)),var(--panel))}.rank-image{filter:none}.rank-name{font-size:19px;letter-spacing:.08em}
+.rank-card .progress{height:10px;border-radius:2px;overflow:visible;position:relative;margin-top:24px;background:var(--panel2)}
+.rank-card .progress:before{content:'';position:absolute;left:0;right:0;top:-10px;height:6px;background:repeating-linear-gradient(90deg,var(--muted) 0 1px,transparent 1px 16px);opacity:.4}
+.rank-card .progress>span{position:relative;border-radius:2px}.rank-card .progress>span:after{content:'';position:absolute;right:0;top:-5px;width:2px;height:20px;background:var(--text)}
+.metric-icon{background:transparent;width:30px;height:30px}.metric-icon svg{width:23px;height:23px}.metric-number{font-size:29px}.metric-label{letter-spacing:.04em}
+.bar,body.light .bar{background:color-mix(in srgb,var(--purple) 35%,transparent)}.bar.today,body.light .bar.today{background:var(--purple)}.bar-wrap{border-bottom:1px solid var(--border)}
+.button.primary{background:var(--purple);border-color:var(--purple);color:var(--bg)}body.light .button.primary{color:#fff}.button.purple,.toolbar button.active{background:color-mix(in srgb,var(--purple) 14%,transparent);border-color:color-mix(in srgb,var(--purple) 40%,transparent);color:var(--purple)}
+.avatar{background:var(--panel2);border-color:var(--purple)}input[type=checkbox]{accent-color:var(--purple)}
+.profile-card{background-image:linear-gradient(180deg,transparent,var(--panel) 65%),url('studio-timeline.svg');background-position:top right;background-size:cover}
+.badge-medal{border:0;border-radius:0;background:none;overflow:visible;color:var(--metal);width:46px;height:46px}
+.badge-medal.legendary:after{content:none;animation:none}.badge-art{width:100%;height:100%}.badge-medal svg{width:100%;height:100%}
+.achievement.locked .badge-medal{opacity:.5}.prestige-label{background:var(--panel2)}.achievement{gap:18px}.achievement .badge-medal{margin-top:3px}
+.note,.tag{background:color-mix(in srgb,var(--purple) 7%,transparent);border-color:color-mix(in srgb,var(--purple) 25%,transparent)}
+@media(max-width:1100px){main{padding:24px}.timer{font-size:54px}.timer-card{background-size:330px auto}.metric-number{font-size:24px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+.profile-card{position:relative;isolation:isolate;overflow:hidden;background:var(--panel)!important;padding-top:170px}
+.profile-cover{position:absolute;inset:0 0 auto;height:210px;background-size:cover;background-position:center;z-index:-1}
+.profile-cover:after{content:'';position:absolute;inset:65% 0 0;background:linear-gradient(transparent,var(--panel))}
+.profile-card .portrait{margin-top:12px}.profile-card .eyebrow{background:var(--panel);padding:5px 10px;border-radius:5px}
+.earned-title{font-size:14px;font-weight:650;letter-spacing:.04em;color:var(--title-color);margin:8px 0;background:linear-gradient(110deg,var(--title-color) 20%,#fff 48%,var(--title-color) 75%);background-size:250% 100%;background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:title-shimmer 6s linear infinite}
+@keyframes title-shimmer{to{background-position:250% 0}}
+.title-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:28px}
+.title-choice{border:1px solid var(--border);border-radius:12px;background:var(--panel);padding:20px;display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+.title-choice p{flex:1}.title-choice.locked .earned-title{animation:none;opacity:.55}.title-choice .button{margin-top:8px}
+.studio-profile{display:flex;gap:20px;align-items:center;position:relative;overflow:hidden;isolation:isolate;margin:20px 0;padding:24px;min-height:155px}
+.studio-profile .profile-cover{height:100%;opacity:.45}.studio-profile .profile-cover:after{inset:0;background:linear-gradient(90deg,var(--panel),transparent)}
+.studio-profile .avatar{width:64px;height:64px;object-fit:cover;flex-shrink:0}.studio-profile h2{font-size:22px}.studio-profile .button{margin-left:auto}.studio-profile .earned-title{margin:5px 0}
+.studio-profile>svg{width:64px;height:64px;flex:0 0 64px;color:var(--purple)}.studio-profile>div:not(.profile-cover){min-width:0}.studio-profile .button{flex-shrink:0}
+.level-timeline{margin-top:18px}.level-timeline .progress{height:7px;border-radius:2px}.level-timeline .progress>span{border-radius:2px}.level-timeline .row{font-size:11px;margin-bottom:8px}
+.level-timeline{margin-bottom:18px}
+.choice-art img{object-fit:contain}.cosmetic-choice:has(input[name=banner]) .choice-art img{object-fit:cover}
+@media(max-width:1100px){.title-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(prefers-reduced-motion:reduce){.earned-title{animation:none}}

@@ -1,0 +1,24 @@
+appId: RankedPro.Desktop
+productName: Ranked Pro
+electronVersion: 45.3.2
+asar: true
+asarUnpack:
+  - bin/**
+  - bridge/**
+directories:
+  app: app
+  output: release
+win:
+  icon: app/assets/icon.ico
+  target: nsis
+  signAndEditExecutable: false
+nsis:
+  oneClick: true
+  perMachine: false
+  artifactName: RankedPro-Setup.exe
+publish:
+  provider: github
+  owner: playerdude901-design
+  repo: RankedPro
+  releaseType: release
+afterPack: tools/release-icon.cjs

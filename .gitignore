@@ -1,0 +1,5 @@
+node_modules/
+desktop/release/
+desktop/dist/
+desktop/test-output/
+*.log
