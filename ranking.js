@@ -48,6 +48,7 @@ function identity(entry,cell){
    button.setAttribute('aria-expanded',String(!expanded));button.textContent=expanded?'+'+(items.length-6):'Menos';
   };badges.append(button);
  }
+ const editorIcon=new Image();editorIcon.src='assets/'+(a.editor==='capcut'?'capcut.svg':'premiere-pro.svg');editorIcon.alt=a.editor==='capcut'?'CapCut':'Premiere Pro';editorIcon.className='public-editor-icon';info.append(editorIcon);
  info.append(badges);box.append(info);cell.append(box);
 }
 function renderRows(rows){

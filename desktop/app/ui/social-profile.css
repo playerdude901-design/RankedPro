@@ -102,3 +102,5 @@
 .creator-verified{display:inline-block;width:22px;height:22px;object-fit:contain;vertical-align:middle;flex:none;margin-left:5px}
 
 .dashboard-name-row{display:flex;align-items:center;gap:5px;flex-wrap:wrap}.dashboard-name-row h3{margin:0}.dashboard-name-row .creator-verified{width:22px;height:22px;margin:0;flex:none}
+
+.ranking-editor-icon{display:inline-block;width:18px;height:18px;vertical-align:middle;margin-left:6px}

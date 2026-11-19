@@ -73,7 +73,7 @@ app.whenReady().then(()=>{
     if(!picture.isEmpty())avatarCache.png=picture.resize({width:96,height:96}).toDataURL();
    }
   }
-  return {xp:engine.data.xp,country:engine.game.P.Country||'',avatar:avatarCache.png,deco:engine.game.P.Deco||'',phrase:(engine.game.P.Title||'').slice(0,80),namefx:engine.game.P.NameFx||'',speed:engine.data.settings.nameSpeed||1,
+  return {xp:engine.data.xp,country:engine.game.P.Country||'',editor:engine.data.settings.editor||'premiere',avatar:avatarCache.png,deco:engine.game.P.Deco||'',phrase:(engine.game.P.Title||'').slice(0,80),namefx:engine.game.P.NameFx||'',speed:engine.data.settings.nameSpeed||1,
    badges:(engine.game.P.Badges||[]).filter(id=>engine.game.P.Unlocked[id]),bio:(engine.game.P.Bio||'').slice(0,500),innerColor:engine.game.P.innerColor||'#a477ed',outerColor:engine.game.P.outerColor||'#574571',innerBorder:engine.game.P.innerBorder||'none',outerBorder:engine.game.P.outerBorder||'none',title:engine.game.P.EarnedTitle||'',banner:engine.game.P.Banner||''};
  };
  social.onSocial=(inbox)=>{

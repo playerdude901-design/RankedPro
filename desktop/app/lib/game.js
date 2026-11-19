@@ -12,7 +12,7 @@ const EPOCH_UTC = Date.UTC(2024, 0, 1);
 
 function newProfile() {
   return {
-    Xp: 0, ActiveSec: 0, LongestSession: 0, OwlSec: 0, EarlySec: 0, LongestRender: 0,
+    Xp: 0, ActiveSec: 0, CapCutSec: 0, LongestSession: 0, OwlSec: 0, EarlySec: 0, LongestRender: 0,
     Sessions: 0, Streak: 0, BestStreak: 0, WeeksCleared: 0, LastStreakDay: "", Day: "", DaySec: 0,
     Stats: {}, ActiveDays: [], Unlocked: {}, Week: "", WeekStats: {}, WeekCleared: [], BonusHour: "", BonusXp: 0,
     DayLog: {}, DayXp: {}, Projects: {}, DayStats: {}, DayStatsDay: "", DailyDone: "", StreakWarned: "",

@@ -15,7 +15,7 @@ class Engine {
   constructor(data={}, now=()=>Date.now()) {
     this.now=now;
     this.data=Object.assign({schema:1,id:crypto.randomUUID(),name:'Mi estudio',created:now(),xp:0,spent:0,bonusTokens:0,owned:[],chests:[],sessions:[],events:[],posts:[],projectInfo:{},settings:{},profile:{},session:null},data);
-    this.data.settings=Object.assign({tray:true,startup:false,idleSeconds:60,notifications:true,sound:false,dailyMinutes:60,weeklyHours:10,hourlyRate:0,currency:'MXN',theme:'dark',nameSpeed:1},data.settings);
+    this.data.settings=Object.assign({tray:true,startup:false,idleSeconds:60,notifications:true,sound:false,dailyMinutes:60,weeklyHours:10,hourlyRate:0,currency:'MXN',theme:'dark',nameSpeed:1,editor:'premiere'},data.settings);
     this.game = new Game({profile:this.data.profile,now,serverXp:()=>this.data.xp,onXp:n=>{this.data.xp+=n;},onToast:t=>this.event(t.title,t.text,t.ach?'achievement':'reward',t.xp,t.ach)});
     // Keep the full achievement catalog visible, but don't award server-only / unobservable milestones.
     const ageMilestones=[
@@ -41,7 +41,7 @@ class Engine {
         goal:(anniversary-created)/86400000,reward:1000*(years+1),v:accountAge
       });
     }
-    this.catalog=[...this.game.ACH,...tenure];
+    this.catalog=[...this.game.ACH,...tenure,...require('./lib/capcut-achievements')];
     Economy.init(this);
     this.game.ACH=this.catalog.filter(a=>!SOCIAL.has(a.id)&&!UNOBSERVABLE.has(a.id));
     const validPool=POOL.filter(q=>SUPPORTED.has(q.stat));
@@ -66,13 +66,13 @@ class Engine {
     this.data.events.unshift(e); this.data.events.length=Math.min(this.data.events.length,300);
     if(this.onEvent) this.onEvent(e);
   }
-  sample(value){this.focus={premiere:value.premiere===true,pid:value.pid,idleMs:clamp(value.idleMs,0,4294967295,4294967295),at:this.now()};}
+  sample(value){this.focus={premiere:this.data.settings.editor==='capcut'?value.capcut===true:value.premiere===true,capcut:value.capcut===true,pid:value.pid,idleMs:clamp(value.idleMs,0,4294967295,4294967295),at:this.now()};}
   get connected(){return this.now()-this.bridge.at<12000 && this.bridge.at>0;}
   tick(){
     const now=this.now(), dt=(now-this.lastTick)/1000; this.lastTick=now;
     const s=this.data.settings, fresh=now-this.focus.at<1800;
-    this.reason=this.paused?'Pausado manualmente':!fresh?'Detector de Windows desconectado':!this.focus.premiere?'Premiere fuera de foco':this.focus.idleMs>s.idleSeconds*1000?'Pausa por inactividad':this.connected&&this.bridge.exporting?'Exportación en curso':'Editando en Premiere';
-    this.active=this.reason==='Editando en Premiere';
+    this.reason=this.paused?'Pausado manualmente':!fresh?'Detector de Windows desconectado':!this.focus.premiere?(s.editor==='capcut'?'CapCut fuera de foco':'Premiere fuera de foco'):this.focus.idleMs>s.idleSeconds*1000?'Pausa por inactividad':this.connected&&this.bridge.exporting?'Exportación en curso':(s.editor==='capcut'?'Editando en CapCut':'Editando en Premiere');
+    this.active=this.reason==='Editando en Premiere'||this.reason==='Editando en CapCut';
     // Never catch up sleep, a stalled event loop, or time before a foreground transition.
     if(this.active && this.wasActive && dt>0 && dt<=2.5) this.carry+=dt; else this.carry=0;
     this.wasActive=this.active;
@@ -89,6 +89,7 @@ class Engine {
     this.game.addXp(xp);session.xp+=xp;
     const key=this.connected?this.bridge.project:'', info=this.data.projectInfo[key]||{};
     this.game.activeSecond(session.seconds,key);
+    if(this.data.settings.editor==='capcut')this.game.P.CapCutSec=(this.game.P.CapCutSec||0)+1;
     Economy.check(this,true);
     const rate=info.rate==null?this.data.settings.hourlyRate:info.rate;
     const money=rate/3600;session.money+=money; const cur=this.data.settings.currency; session.income ||= {}; session.income[cur]=(session.income[cur]||0)+money;
@@ -156,6 +157,7 @@ class Engine {
     for(const key of ['tray','startup','notifications','sound'])if(typeof values[key]==='boolean')s[key]=values[key];
     for(const [k,min,max] of [['nameSpeed',0.25,4],['idleSeconds',5,600],['dailyMinutes',0,1440],['weeklyHours',0,168],['hourlyRate',0,100000]])if(k in values)s[k]=clamp(values[k],min,max);
     if(['MXN','USD','EUR','GBP','CAD','BRL','COP','ARS','CLP','PEN','JPY'].includes(values.currency))s.currency=values.currency;
+    if(['premiere','capcut'].includes(values.editor))s.editor=values.editor;
     if(['dark','light'].includes(values.theme))s.theme=values.theme;
     this.game.P.HoursGoal=s.weeklyHours;
     if(typeof values.name==='string'&&values.name.trim())this.data.name=values.name.trim().slice(0,40);

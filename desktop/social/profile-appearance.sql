@@ -21,6 +21,7 @@ begin
   end if;
   update public.editors set appearance=jsonb_build_object(
     'avatar',avatar_data,
+    'editor',case when appearance_data->>'editor' in ('premiere','capcut') then appearance_data->>'editor' else 'premiere' end,
     'country',case when appearance_data->>'country' ~ '^[A-Z]{2}$' then appearance_data->>'country' else '' end,
     'xp',case when jsonb_typeof(appearance_data->'xp')='number' then greatest(0,(appearance_data->>'xp')::numeric) else null end,
     'deco',left(coalesce(appearance_data->>'deco',''),80),
