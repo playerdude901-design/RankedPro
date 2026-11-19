@@ -19,6 +19,14 @@ function identity(entry,cell){
   name.style.setProperty('--cycle',(1.15/Math.min(4,Math.max(.25,Number(a.speed)||1)))+'s');
  }
  info.append(name);
+ if(entry.id==='18edd5dd-9a86-4242-b9d6-9f9ce919170b'){const badge=new Image();badge.src='assets/creator-verified.gif';badge.className='creator-verified';badge.alt='Creador de Ranked Pro verificado';badge.title='Creador de Ranked Pro';info.append(badge);}
+
+ if(/^[A-Z]{2}$/.test(a.country||'')){
+  const flag=new Image();flag.src='assets/flags/'+a.country+'.png';flag.className='public-country-flag';
+  let label=a.country;try{label=new Intl.DisplayNames(['es'],{type:'region'}).of(a.country);}catch{}
+  flag.alt=label;flag.title=label;flag.loading='lazy';info.append(flag);
+ }
+
  const badges=document.createElement('div');badges.className='public-badges';
  const ids=Array.isArray(a.badges)?a.badges:[];
  const items=cosmetics.badges.filter(b=>ids.includes(b.id)).sort((a,b)=>b.reward-a.reward);
@@ -52,7 +60,16 @@ function renderRows(rows){
   place.textContent='#'+entry.position;
   row.insertCell().append(place);
   identity(entry,row.insertCell());
-  row.insertCell().textContent=formatTime(entry.seconds);
+  const ranks=[['IRON',0,'#9aa0a8'],['BRONZE',2500,'#d0884f'],['SILVER',10000,'#d6dee8'],['GOLD',35000,'#f5c542'],['PLATINUM',100000,'#4fd8c9'],['DIAMOND',250000,'#7cc8ff'],['ASCENDANT',500000,'#b98cff'],['IMMORTAL',750000,'#c24bff'],['RADIANT',1000000,'#f45b58']];
+  const known=typeof entry.appearance?.xp==='number'&&Number.isFinite(entry.appearance.xp),xp=known?Math.max(0,entry.appearance.xp):0;
+  const rank=[...ranks].reverse().find(r=>xp>=r[1]),max=Math.max(1,...rows.map(r=>Number(r.appearance?.xp)||0));
+  const progress=document.createElement('div');progress.className='rank-progress-row';
+  const track=document.createElement('div');track.className='rank-progress-track';
+  const fill=document.createElement('div');fill.className='rank-progress-fill';fill.style.width=(known?Math.max(8,xp/max*100):8)+'%';fill.style.setProperty('--rank-tone',known?rank[2]:'#747780');
+  if(known){const emblem=new Image();emblem.src='assets/ranks/'+rank[0].toLowerCase()+'.svg';emblem.alt='';emblem.className='rank-progress-icon';fill.append(emblem);}
+  const label=document.createElement('span');label.textContent=known?rank[0]:'—';fill.append(label);track.append(fill);
+  const value=document.createElement('div');value.className='rank-progress-value';const total=document.createElement('strong');total.textContent=known?Math.floor(xp).toLocaleString('es-MX')+' XP':'XP pendiente';const time=document.createElement('small');time.textContent=formatTime(entry.seconds);value.append(total,time);progress.append(track,value);row.insertCell().append(progress);
+
   fragment.append(row);
  }
  document.querySelector('tbody').replaceChildren(fragment);

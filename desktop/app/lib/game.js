@@ -17,7 +17,7 @@ function newProfile() {
     Stats: {}, ActiveDays: [], Unlocked: {}, Week: "", WeekStats: {}, WeekCleared: [], BonusHour: "", BonusXp: 0,
     DayLog: {}, DayXp: {}, Projects: {}, DayStats: {}, DayStatsDay: "", DailyDone: "", StreakWarned: "",
     LastNightDay: "", AchSeen: [], Rivals: [], FollowersSeen: [], Socials: {}, Owned: [], Avatar: "",
-    Badges: null, Title: "", EarnedTitle: "", NameColor: "", Hidden: [], RankSeen: -1, DayGoal: 0, HoursGoal: 0, GoalHitWeek: "",
+    Badges: null, Title: "", EarnedTitle: "", Bio: "", innerBorder: "none", outerBorder: "none", NameColor: "", Hidden: [], RankSeen: -1, DayGoal: 0, HoursGoal: 0, GoalHitWeek: "",
     ChestItems: [], TokensSpent: 0, TokensBonus: 0, GiftsClaimed: [], Deco: "", NameFx: "", Banner: "", Dm: "all", InviteSeen: false,
     Lang: -1, Theme: 1, Fps: 0, Sound: 2, NoTranslate: false, NoErrorReports: false, Layout: "", Focus: false, DayGoalHit: "", Mini: false, MiniBig: false, MoneyRate: 0, MoneyCur: "", ProjectRates: {}, SessionMoney: 0, SessionMoneyCur: "", Notes: {},
   };

@@ -5,9 +5,13 @@ const root='http://localhost:'+config.port;
 const instance=Date.now().toString(36)+'-'+Math.random().toString(36).slice(2);
 let seq=0,timer=null,busy=false,project=null,sequence=null,projectId='',sequenceId='',lastPos=null,lastAt=0,scanAt=0,dirty=true,renderAt=0,visible=true;
 let events=[],pending=null,hooked=[],globals=[],capabilities=[],lastMessage='';
-let projectReadyAt=0;
+let projectReadyAt=0,leaderboardAt=0;
 const state={project:'',name:'',sequence:'',playing:false,exporting:false,error:'',capabilities};
 function status(text){if(text===lastMessage)return;lastMessage=text;if(visible){const el=document.getElementById('status');if(el)el.textContent=text;}}
+async function leaderboard(){
+ try{const data=await request('/leaderboard');const list=document.getElementById('leaderboard'),empty=document.getElementById('leaderboard-empty');if(!list)return;list.replaceChildren();for(const row of data.rows||[]){const li=document.createElement('li'),place=document.createElement('b'),name=document.createElement('span'),time=document.createElement('small');place.textContent='#'+row.position;name.textContent=row.nickname;time.textContent=(Number(row.seconds||0)/3600).toFixed(1)+' h';li.append(place,name,time);list.append(li);}empty.hidden=!!data.rows?.length;empty.textContent=data.ready?'Todavía no hay editores en la clasificación.':'Inicia sesión en Social dentro de Ranked Pro para ver la clasificación.';}catch{const empty=document.getElementById('leaderboard-empty');if(empty){empty.hidden=false;empty.textContent='Abre Ranked Pro para cargar la clasificación.';}}
+}
+if(typeof document!=='undefined'){const refresh=document.getElementById('refresh');if(refresh)refresh.onclick=leaderboard;leaderboard();}
 async function request(url,body){
  const options={method:body?'POST':'GET',headers:{Authorization:'Bearer '+config.token}};
  if(body){options.headers['Content-Type']='application/json';options.body=JSON.stringify(body);}
@@ -64,7 +68,7 @@ async function loop(){
    else {state.playing=false;delay=5000;}
    if(!pending){pending={instance,seq:++seq,state:Object.assign({},state),events};events=[];}
    await request('/events',pending);pending=null;
-   status(state.error?'Conectado · '+state.error:'Conectado · '+(state.name||'sin proyecto abierto'));
+   status(state.error?'Puente activo · '+state.error:'Puente activo · '+(state.name||'sin proyecto abierto'));if(visible&&Date.now()-leaderboardAt>30000){leaderboardAt=Date.now();leaderboard();}
  }catch(e){status('Sin conexión: '+String(e.message||e).slice(0,180));console.warn('Ranked Pro Bridge: '+String(e.message||e));delay=5000;}
  finally{busy=false;timer=setTimeout(loop,delay);}
 }

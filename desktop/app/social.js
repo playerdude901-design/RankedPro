@@ -18,7 +18,7 @@ class Social {
  get ready(){return /^https:\/\/[a-z0-9-]+\.supabase\.co$/.test(this.config.url)&&Boolean(this.config.publishableKey);}
  get session(){return this.data.session;}
  get account(){return this.session&&this.data.accounts[this.session.user.id];}
- view(){return {ready:this.ready,name:this.session?.user.user_metadata?.nickname,logged:!!this.session,rows:this.rows,inbox:this.inbox,upgraded:this.upgraded,error:this.error};}
+ view(){return {userId:this.session?.user.id,ready:this.ready,name:this.session?.user.user_metadata?.nickname,logged:!!this.session,rows:this.rows,inbox:this.inbox,upgraded:this.upgraded,error:this.error};}
  save(){
   const bytes=this.vault.encryptString(JSON.stringify(this.data));
   fs.writeFileSync(this.file+'.tmp',bytes);

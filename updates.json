@@ -1,13 +1,79 @@
 [
- {
-  "version":"1.2.0",
-  "date":"2026-11-15",
-  "title":"Tu estudio, tu progreso",
-  "sections":[
-   {"title":"Nueva interfaz", "items":["Resumen renovado: perfil a la izquierda, sesión activa a la derecha y gráfica semanal de edición.","El color del banner o GIF se funde suavemente con el morado de la interfaz.","Nuevos emblemas y sección Rangos con la XP necesaria y restante. Se conservan los nueve rangos y sus requisitos.","Insignias con símbolos simples y sus colores de rareza originales."]},
-   {"title":"Balance de experiencia", "items":["El tiempo activo pasa de 6 a 10 XP por minuto (600 XP por hora de base).", "Bonos diarios acumulativos: 15 minutos +50 XP; 30 minutos +100; 60 minutos +150; 120 minutos +200. Se acumulan entre sesiones y solo se conceden una vez al día.","Estos bonos reemplazan el multiplicador por duración de sesión. Una hora activa normal entrega 900 XP incluyendo los bonos, antes de retos y logros.","El doble XP se aplica solo al tiempo activo; no duplica bonos diarios, retos ni acciones.","Los umbrales de rango permanecen iguales: subir será más rápido. Tu XP y los rangos ya alcanzados se conservan."]},
-   {"title":"Más formas de ganar fichas", "items":["Se mantiene 1 ficha por cada 10 XP. Además: 30 minutos activos al día +15 fichas; reto diario +10; cada reto semanal +25; completar los cinco +50 adicionales.","Los nuevos logros entregan entre 5 y 50 fichas según su rareza. Cada nuevo rango entrega entre 25 y 200 fichas.","Las recompensas son automáticas. Los logros y rangos anteriores a esta actualización no vuelven a pagar fichas."]},
-   {"title":"Personalización y correcciones", "items":["Banners por rango y títulos equipables bajo el nombre, con barrido de luz blanca sobre su color.","Títulos adicionales por 10, 25 y 50 logros; Veterano por 300 sesiones y OG por el primer aniversario.","Corregidas las vistas previas de banners y nombres animados en el test de inventario y el bucle de animación en la tienda.","Nuevo buzón Novedades: consulta los parches cuando quieras. El tablón se abre una vez por versión al entrar a la aplicación."]}
-  ]
- }
+  {
+    "version": "1.3.0",
+    "date": "2026-11-19",
+    "title": "Tu identidad, tu clasificación",
+    "sections": [
+      {
+        "title": "Interfaz y clasificación",
+        "items": [
+          "Nueva interfaz gris carbón, sesión y rango destacados, y perfil con banner.",
+          "Clasificación con barras de XP, emblemas de rango, banderas e insignias. Los perfiles sin XP sincronizada muestran XP pendiente.",
+          "Panel de Premiere dedicado a la clasificación; mantiene el seguimiento en segundo plano.",
+          "Web renovada con sección de créditos al proyecto VISFX Ranked."
+        ]
+      },
+      {
+        "title": "Perfiles y personalización",
+        "items": [
+          "Descripción pública, país opcional, títulos, insignias y vista de perfiles desde Social.",
+          "Colores sólidos libres para avatar y tarjeta. Efectos animados desbloqueados por rango.",
+          "Bordes y decoraciones del avatar pueden usarse simultáneamente.",
+          "Seis insignias visibles y botón para desplegar las restantes.",
+          "Test de personalización con colores, efectos, títulos, insignias y GIF.",
+          "Insignia animada exclusiva de la cuenta creadora."
+        ]
+      },
+      {
+        "title": "Balance y compatibilidad",
+        "items": [
+          "Se mantienen los requisitos de rango y las reglas de XP y fichas de la versión anterior.",
+          "La nueva apariencia de otros editores requiere actualizar la función de perfiles del servidor; se incluye la migración."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.0",
+    "date": "2026-11-15",
+    "title": "Tu estudio, tu progreso",
+    "sections": [
+      {
+        "title": "Nueva interfaz",
+        "items": [
+          "Resumen renovado: perfil a la izquierda, sesión activa a la derecha y gráfica semanal de edición.",
+          "El color del banner o GIF se funde suavemente con el morado de la interfaz.",
+          "Nuevos emblemas y sección Rangos con la XP necesaria y restante. Se conservan los nueve rangos y sus requisitos.",
+          "Insignias con símbolos simples y sus colores de rareza originales."
+        ]
+      },
+      {
+        "title": "Balance de experiencia",
+        "items": [
+          "El tiempo activo pasa de 6 a 10 XP por minuto (600 XP por hora de base).",
+          "Bonos diarios acumulativos: 15 minutos +50 XP; 30 minutos +100; 60 minutos +150; 120 minutos +200. Se acumulan entre sesiones y solo se conceden una vez al día.",
+          "Estos bonos reemplazan el multiplicador por duración de sesión. Una hora activa normal entrega 900 XP incluyendo los bonos, antes de retos y logros.",
+          "El doble XP se aplica solo al tiempo activo; no duplica bonos diarios, retos ni acciones.",
+          "Los umbrales de rango permanecen iguales: subir será más rápido. Tu XP y los rangos ya alcanzados se conservan."
+        ]
+      },
+      {
+        "title": "Más formas de ganar fichas",
+        "items": [
+          "Se mantiene 1 ficha por cada 10 XP. Además: 30 minutos activos al día +15 fichas; reto diario +10; cada reto semanal +25; completar los cinco +50 adicionales.",
+          "Los nuevos logros entregan entre 5 y 50 fichas según su rareza. Cada nuevo rango entrega entre 25 y 200 fichas.",
+          "Las recompensas son automáticas. Los logros y rangos anteriores a esta actualización no vuelven a pagar fichas."
+        ]
+      },
+      {
+        "title": "Personalización y correcciones",
+        "items": [
+          "Banners por rango y títulos equipables bajo el nombre, con barrido de luz blanca sobre su color.",
+          "Títulos adicionales por 10, 25 y 50 logros; Veterano por 300 sesiones y OG por el primer aniversario.",
+          "Corregidas las vistas previas de banners y nombres animados en el test de inventario y el bucle de animación en la tienda.",
+          "Nuevo buzón Novedades: consulta los parches cuando quieras. El tablón se abre una vez por versión al entrar a la aplicación."
+        ]
+      }
+    ]
+  }
 ]

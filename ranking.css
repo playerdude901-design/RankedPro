@@ -37,3 +37,7 @@ nav{display:flex;align-items:center;gap:20px}nav a,.download{color:inherit;text-
 .public-badge[hidden]{display:none}.public-badges button{padding:3px 5px;font-size:11px}
 @media(max-width:620px){.public-profile{gap:6px}.public-avatar{width:28px;height:28px}}
 @media(prefers-reduced-motion:reduce){.public-name{animation:none}}
+
+.public-country-flag{display:inline-block;width:24px;height:17px;object-fit:contain;vertical-align:middle;margin-left:8px;border-radius:2px}
+
+.creator-verified{display:inline-block;width:22px;height:22px;object-fit:contain;vertical-align:middle;flex:none;margin-left:5px}
